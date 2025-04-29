@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do</title>
     <link rel="stylesheet" href="./src/styles/style.css">
-    <link rel="stylesheet" href="./src/styles/reset.css">
-    <script src="../Js/main.js" defer></script>
+    <script src="./src/main.js" type="module" defer></script>
 </head>
-<body>
-    <h1>To Do</h1>
+<body class="font-josefin text-lg bg-[url(/assets/img/bg-desktop-light.jpg)] bg-no-repeat bg-contain min-h-screen overflow-x-hidden">
+    <header class="flex items-center justify-between mt-20 w-96 m-auto">
+        <h1 class="font-bold text-3xl text-white">T O D O</h1><button><img src="/assets/img/icon-moon.svg" alt="Icono de una luna"></button>
+    </header>
+    <form class=" flex items-center gap-4 mt-8 m-auto bg-white w-96 p-4 rounded">
+        <button class="rounded-full border w-6 h-6" type="submit"></button>
+        <input class="outline-none h-8" type="text" placeholder="Create a new todo...">
+
+    </form>
 
 
 
