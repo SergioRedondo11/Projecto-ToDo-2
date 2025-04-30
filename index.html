@@ -5,22 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do</title>
     <link rel="stylesheet" href="./src/styles/style.css">
-    <script src="./src/main.js" type="module" defer></script>
+    <script src="./src/js/main.js" type="module" defer></script>
 </head>
-<body class="font-josefin text-lg bg-[url(/assets/img/bg-desktop-light.jpg)] bg-no-repeat bg-contain min-h-screen overflow-x-hidden">
-    <header class="flex items-center justify-between mt-20 w-96 m-auto">
-        <h1 class="font-bold text-3xl text-white">T O D O</h1><button><img src="/assets/img/icon-moon.svg" alt="Icono de una luna"></button>
+<body class="font-josefin text-lg min-h-screen overflow-x-hidden">
+    <header class="relative z-10 bg-[url(/assets/img/bg-desktop-light.jpg)] bg-no-repeat bg-cover flex items-center justify-center gap-96 h-80">
+        <h1 class="font-bold text-3xl text-white" id="title">T O D O</h1>
+        <button id="mode-button" class="z-20 relative">
+            <img id="icon-moon" src="" alt="Icono de una luna">
+        </button>
     </header>
-    <form class=" flex items-center gap-4 mt-8 m-auto bg-white w-96 p-4 rounded">
-        <button class="rounded-full border w-6 h-6" type="submit"></button>
-        <input class="outline-none h-8" type="text" placeholder="Create a new todo...">
-
+    
+    <form id="todo-form" class="flex items-center gap-4 mt-8 mb-10 m-auto bg-white w-lg p-4 rounded absolute left-1/2 top-50 -translate-x-1/2 z-30">
+        <button id="todo-button" class="rounded-full border w-7 h-7" type="submit"></button>
+        <input id="todo-text" class="outline-none h-8 w-full"  type="text" placeholder="Create a new todo...">
     </form>
-
-
-
-
-
-
+    
+    <section id="list" class="relative z-20 flex justify-between gap-4 m-auto -mt-2 bg-white w-lg p-4 rounded shadow-xl">
+        <div class="flex justify-center gap-4">
+            <button id="list-button" class="rounded-full border w-7 h-7" type="button"></button>
+            <p id="list-text" class="leading-8">Hacer la compra</p>
+        </div>
+        <button id="cross-button"><img id="icon-cross" src="" alt="Icono de una cruz"></button>
+    </section>
+    
 </body>
-</html> 
+</html>
