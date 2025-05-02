@@ -26,6 +26,7 @@
 @theme{
     --font-josefin: 'Josefins', sans-serif;
 }
+
 button{
     cursor: pointer;
 }

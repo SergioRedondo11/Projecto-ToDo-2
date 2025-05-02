@@ -1,6 +1,7 @@
 import sunIcon from '../assets/img/icon-sun.svg'
 import moonIcon from '../assets/img/icon-moon.svg'
 import crossIcon from '../assets/img/icon-cross.svg'
+import checkIcon from '../assets/img/icon-check.svg'
 
 
 // Form
@@ -13,7 +14,75 @@ const $todoForm = document.getElementById('todo-form')
 
 
 
-let nightMode = false
+export function CreateEliminateToDo(event){
+    event.preventDefault()
+    
+    const existingAlert = document.querySelector('.text-red-500')
+    
+    if ($todoText.value.trim() === '') {
+        if (!existingAlert) {
+            const alertmsg = document.createElement('p')
+            alertmsg.innerText = 'No puedes añadir una tarea sin texto'
+            alertmsg.classList.add('text-red-500', 'border-2', 'ml-4', 'max-w-40', 'absolute')
+            $todoForm.insertAdjacentElement('afterend', alertmsg)
+        }
+        return
+    }
+    if (existingAlert) {
+        existingAlert.remove()
+    }
+    
+    const section = document.createElement('section')
+    section.innerHTML = `
+    <div class="flex justify-center gap-4">
+    <button class="list-button rounded-full border w-7 h-7" type="button"></button>
+    <p class="list-text leading-8">${$todoText.value}</p>
+    </div>
+    <button class="cross-button">
+    <img class="icon-cross" src="${crossIcon}" alt="Icono de una cruz">
+    </button>
+    `
+    
+    section.className = 'list relative z-20 flex justify-between gap-4 m-auto -mt-2 bg-white w-lg p-4 rounded shadow-xl'
+    document.body.append(section)
+    
+    $todoText.value = ''
+    
+    if (nightMode) {
+        section.classList.replace('bg-white', 'bg-neutral-700')
+        section.querySelector('.list-button').classList.add('border-white')
+        section.querySelector('.list-text').classList.add('text-white')
+        section.querySelector('.cross-button').classList.add('bg-gray-300', 'border', 'border-neutral-700', 'p-2')
+    }
+    section.querySelector('.cross-button').addEventListener('click', () => {
+        section.remove();
+
+    });
+    
+    const $listButton = section.querySelector('.list-button')
+    $listButton.addEventListener('click',() =>{
+
+        
+        const $text = section.querySelector('.list-text')
+        $text.classList.toggle('line-through')
+      $text.classList.toggle('text-gray-400')
+      
+      const existingCheck = $listButton.querySelector('img');
+      
+      if (existingCheck) {
+          existingCheck.remove(); 
+        } 
+      else {
+          const check = document.createElement('img');
+          check.src = checkIcon;
+          check.alt = 'Icono de un check';
+          check.className = 'm-auto'; 
+          $listButton.appendChild(check);
+        }
+        })
+    }
+    
+    let nightMode = false
 export function ToggleNightMode(){
     const $list = document.querySelectorAll('.list')
     const $listButton = document.querySelectorAll('.list-button')
@@ -31,7 +100,7 @@ export function ToggleNightMode(){
             $list[i].classList.replace('bg-white','bg-neutral-700')
             $listButton[i].classList.add('border-white')
             $listText[i].classList.add('text-white')
-            $crossButton[i].classList.add('bg-gray-300', 'border','border-neurtal-700', 'p-2')
+            $crossButton[i].classList.add('bg-gray-300', 'border','border-neutral-700', 'p-2')
         }
     
         const $moon = document.getElementById('icon-moon')
@@ -72,47 +141,3 @@ else{
     nightMode = false
 }
 }
-
-export function CreateToDo(){
-    event.preventDefault()
-    
-    const existingAlert = document.querySelector('.text-red-500')
-    
-    if ($todoText.value.trim() === '') {
-        if (!existingAlert) {
-            const alertmsg = document.createElement('p')
-            alertmsg.innerText = 'No puedes añadir una tarea sin texto'
-            alertmsg.classList.add('text-red-500', 'absolute','left-96', 'border-2')
-            $todoForm.insertAdjacentElement('afterend', alertmsg)
-        }
-        return
-    }
-    
-    if (existingAlert) {
-        existingAlert.remove()
-    }
-    
-    const section = document.createElement('section')
-    section.innerHTML = `
-    <div class="flex justify-center gap-4">
-    <button class="list-button rounded-full border w-7 h-7" type="button"></button>
-    <p class="list-text leading-8">${$todoText.value}</p>
-    </div>
-    <button class="cross-button">
-    <img class="icon-cross" src="${crossIcon}" alt="Icono de una cruz">
-    </button>
-    `
-    
-    section.className = 'list relative z-20 flex justify-between gap-4 m-auto -mt-2 bg-white w-lg p-4 rounded shadow-xl'
-    document.body.append(section)
-    
-    $todoText.value = ''
-    
-    if (nightMode) {
-        section.classList.replace('bg-white', 'bg-neutral-700')
-        section.querySelector('.list-button').classList.add('border-white')
-        section.querySelector('.list-text').classList.add('text-white')
-        section.querySelector('.cross-button').classList.add('bg-gray-300', 'border', 'border-neutral-700', 'p-2')
-    }
-}
-
