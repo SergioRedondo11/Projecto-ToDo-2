@@ -1,32 +1,62 @@
 @import "tailwindcss";
 
-:root{
- --main-blue: hsl(220, 98%, 61%);
- --check-linear-gradient-1: hsl(192, 100%, 67%);
- --check-linear-gradient-2: hsl(280, 87%, 65%);
- --Very-Light-Gray: hsl(0, 0%, 98%);
- --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
- --Light-Grayish-Blue: hsl(233, 11%, 84%);
- --Dark-Grayish-Blue: hsl(236, 9%, 61%);
- --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('/assets/fonts/JosefinSans-VariableFont_wght.ttf');
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Josefins';
-    src: url(/assets/fonts/JosefinSans-VariableFont_wght.ttf);
-    font-style: normal;
+  font-family: 'Josefin Sans';
+  src: url('/assets/fonts/JosefinSans-Italic-Variable.ttf');
+  font-style: italic;
 }
 
-@font-face {
-    font-family: 'Josefins';
-    src: url(/assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf);
-    font-style: italic;
+:root {
+  --bg-desktop: url('/img/bg-desktop-light.jpg');
+  --letter-spacing-xl: 8px;
+  --very-light-gray: hsl(0, 0%, 98%);
+  --very-light-grayish: hsl(236, 33%, 92%);
+  --light-grayish-blue: hsl(233, 11%, 84%);
+  --dark-grayish-blue: hsl(236, 9%, 61%);
+  --very-dark-grayish-blue: hsl(235, 19%, 35%);
+  --bright-blue: hsl(220, 98%, 61%);
+  --bright-purple: hsl(280, 87%, 65%);
 }
 
-@theme{
-    --font-josefin: 'Josefins', sans-serif;
+
+@theme {
+  --tracking-gigante: 8px;
+  --color-todo-blue: hsl(220, 98%, 61%);
+  --font-josefin: 'Josefin Sans', sans-serif;
+  --background-image-mobile: url('/assets/img/bg-desktop-light.jpg');
+  --background-image-desktop: url('/assets/img/bg-desktop-light.jpg');
+  --background-image-check-gradient: linear-gradient(135deg, var(--bright-blue), var(--bright-purple));
+
 }
 
-button{
-    cursor: pointer;
-}
+
+
+
+
+
+/*  Esto es CSS PURO, para hacerlo en tailwind usariamos la clases group o peer */
+/* input:checked + label {
+  background-image: linear-gradient(135deg, var(--bright-blue), var(--bright-purple));
+} */
+
+
+/* 
+input:checked + label > .check-icon {
+  display: block;
+} */
+
+/* 
+article:not(:last-child) {
+  border-bottom: 3px solid red;
+} */
+
+
+/* article:last-child {
+  border-bottom: none;
+} */
